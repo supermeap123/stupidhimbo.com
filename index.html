@@ -38,5 +38,21 @@
     <footer>
         <p>&copy; 2024 Stupid Himbo. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var protectedLinks = document.querySelectorAll('.protected-link');
+            protectedLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var href = this.getAttribute('data-href');
+                    var decodedHref = href.replace(/[a-zA-Z]/g, function(c) {
+                        return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+                    });
+                    window.open(decodedHref, '_blank');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
