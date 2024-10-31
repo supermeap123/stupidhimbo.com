@@ -24,12 +24,12 @@
         
         <section id="contact">
             <h2><u>CONTACT</u></h2>
-            <p>You can find me at <i><u><a href="https://unbelovd.tumblr.com" target="_blank">UNBELOVD</a></u></i><i>,</i> <i><u><a href="https://wulfbluds.tumblr.com" target="_blank">WULFBLUDS</a></u></i><i>,</i> or <i><u><a href="https://ohisms.tumblr.com" target="_blank">OHISMS</a></u></i> on tumblr<i>,</i> & my discord handle is <i>dru_ids</i> <i>!</i></p>
+            <p>You can find me at <i><u><a class="protected-link" data-href="uggcf://haorybin.ghzoye.pbz" target="_blank">UNBELOVD</a></u></i><i>,</i> <i><u><a class="protected-link" data-href="uggcf://jhysoyqf.ghzoye.pbz" target="_blank">WULFBLUDS</a></u></i><i>,</i> or <i><u><a class="protected-link" data-href="uggcf://buvfzf.ghzoye.pbz" target="_blank">OHISMS</a></u></i> on tumblr<i>,</i> & my discord handle is <i>dru_ids</i> <i>!</i></p>
             <p>Got questions or want to connect? Reach out!</p>
             <ul>
-                <li>Email: <a href="mailto:rowan@gwyntel.us">rowan@gwyntel.us</a></li>
-                <li>Twitter: <a href="https://twitter.com/rowanithink" target="_blank">@rowanithink</a></li>
-                <li>Instagram: <a href="https://instagram.com/eatsp1t" target="_blank">@eatsp1t</a></li>
+                <li>Email: <a class="protected-link" data-href="znvygb:ebjnaQtjlagry.hf">rowan@gwyntel.us</a></li>
+                <li>Twitter: <a class="protected-link" data-href="uggcf://gjvggre.pbz/ebjnavguvax" target="_blank">@rowanithink</a></li>
+                <li>Instagram: <a class="protected-link" data-href="uggcf://vafgntenz.pbz/rngfc1g" target="_blank">@eatsp1t</a></li>
             </ul>
         </section>
     </main>
@@ -37,5 +37,21 @@
     <footer>
         <p>&copy; 2024 Stupid Himbo. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var protectedLinks = document.querySelectorAll('.protected-link');
+            protectedLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var href = this.getAttribute('data-href');
+                    var decodedHref = href.replace(/[a-zA-Z]/g, function(c) {
+                        return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+                    });
+                    window.open(decodedHref, '_blank');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
