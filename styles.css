@@ -1,0 +1,86 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('https://wallpapers.com/images/hd/olive-tree-1920-x-1200-vd4tnrc7ee1my1qx.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgba(73, 73, 47, 0.9);
+    color: #ffffff;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+header h1 {
+    margin-bottom: 0;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+header p {
+    margin-top: 5px;
+}
+
+h1, h2 {
+    color: #FFFFFF;
+}
+
+a {
+    color: #FFFF00;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section {
+    background-color: rgba(73, 73, 47, 0.9);
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    color: #ffffff;
+    backdrop-filter: blur(5px);
+}
+
+#contact a {
+    color: #888058;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(73, 73, 47, 0.9);
+    color: #ffffff;
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+}
