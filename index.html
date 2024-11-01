@@ -28,7 +28,8 @@
             background-color: white;
             padding: 20px;
             border-radius: 5px;
-            max-width: 90%;
+            width: 540px;
+            height: 80vh;
             max-height: 90%;
             overflow: auto;
         }
@@ -38,6 +39,13 @@
             right: 10px;
             font-size: 24px;
             cursor: pointer;
+            color: #000;
+            z-index: 1001;
+        }
+        .tumblr-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
@@ -73,37 +81,35 @@
     <div id="overlay" class="overlay">
         <div class="popup">
             <span class="close-btn">&times;</span>
-            <div id="tumblr-embed"></div>
+            <iframe id="tumblr-iframe" class="tumblr-iframe"></iframe>
         </div>
     </div>
 
-    <script src="https://assets.tumblr.com/post.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var tumblrLinks = document.querySelectorAll('.tumblr-link');
             var overlay = document.getElementById('overlay');
             var closeBtn = document.querySelector('.close-btn');
-            var tumblrEmbed = document.getElementById('tumblr-embed');
+            var iframe = document.getElementById('tumblr-iframe');
 
             tumblrLinks.forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     var blog = this.getAttribute('data-blog');
-                    tumblrEmbed.innerHTML = '<div class="tumblr-post" data-href="https://embed.tumblr.com/embed/post/' + blog + '" data-did=""></div>';
+                    iframe.src = `https://${blog}.tumblr.com`;
                     overlay.style.display = 'block';
-                    Tumblr.createPostEmbed(blog + '.tumblr.com', tumblrEmbed.firstChild);
                 });
             });
 
-            closeBtn.addEventListener('click', function() {
+            function closeOverlay() {
                 overlay.style.display = 'none';
-                tumblrEmbed.innerHTML = '';
-            });
+                iframe.src = '';
+            }
 
+            closeBtn.addEventListener('click', closeOverlay);
             overlay.addEventListener('click', function(e) {
                 if (e.target === overlay) {
-                    overlay.style.display = 'none';
-                    tumblrEmbed.innerHTML = '';
+                    closeOverlay();
                 }
             });
         });
