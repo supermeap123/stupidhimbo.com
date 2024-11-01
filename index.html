@@ -42,10 +42,10 @@
             color: #000;
             z-index: 1001;
         }
-        .tumblr-iframe {
+        .tumblr-container {
             width: 100%;
             height: 100%;
-            border: none;
+            min-height: 500px;
         }
     </style>
 </head>
@@ -81,7 +81,7 @@
     <div id="overlay" class="overlay">
         <div class="popup">
             <span class="close-btn">&times;</span>
-            <iframe id="tumblr-iframe" class="tumblr-iframe"></iframe>
+            <div id="tumblr-container" class="tumblr-container"></div>
         </div>
     </div>
 
@@ -90,20 +90,32 @@
             var tumblrLinks = document.querySelectorAll('.tumblr-link');
             var overlay = document.getElementById('overlay');
             var closeBtn = document.querySelector('.close-btn');
-            var iframe = document.getElementById('tumblr-iframe');
+            var container = document.getElementById('tumblr-container');
 
             tumblrLinks.forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     var blog = this.getAttribute('data-blog');
-                    iframe.src = `https://${blog}.tumblr.com`;
+                    
+                    // Load Tumblr embed
+                    container.innerHTML = `
+                        <iframe 
+                            src="https://${blog}.tumblr.com/embed" 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            allowfullscreen="true"
+                            style="min-height: 500px;"
+                        ></iframe>
+                    `;
+                    
                     overlay.style.display = 'block';
                 });
             });
 
             function closeOverlay() {
                 overlay.style.display = 'none';
-                iframe.src = '';
+                container.innerHTML = '';
             }
 
             closeBtn.addEventListener('click', closeOverlay);
