@@ -85,6 +85,7 @@
         </div>
     </div>
 
+    <script src="https://assets.tumblr.com/post.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var tumblrLinks = document.querySelectorAll('.tumblr-link');
@@ -97,17 +98,19 @@
                     e.preventDefault();
                     var blog = this.getAttribute('data-blog');
                     
-                    // Create the embed code using Tumblr's blog embed
+                    // Create the embed code using Tumblr's official embed format
                     container.innerHTML = `
-                        <iframe
-                            src="https://${blog}.tumblr.com/mobile"
-                            width="100%"
-                            height="100%"
-                            frameborder="0"
-                            allow="encrypted-media"
-                            style="min-height: 500px; background: white;"
-                        ></iframe>
+                        <div class="tumblr-post" 
+                             data-href="https://${blog}.tumblr.com" 
+                             data-did="dashboard">
+                            <a href="https://${blog}.tumblr.com">Visit ${blog}'s blog</a>
+                        </div>
                     `;
+                    
+                    // Trigger Tumblr's embed script
+                    if (typeof Tumblr !== 'undefined') {
+                        Tumblr.createPostEmbed(container.firstChild);
+                    }
                     
                     overlay.style.display = 'block';
                 });
