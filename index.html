@@ -10,42 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
     <style>
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.7);
-            z-index: 1000;
+        .tumblr-link {
+            position: relative;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
         }
-        .popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            width: 540px;
-            height: 80vh;
-            max-height: 90%;
-            overflow: auto;
+        .tumblr-link:hover {
+            opacity: 0.8;
         }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #000;
-            z-index: 1001;
+        .tumblr-link::after {
+            content: '↗';
+            font-size: 0.8em;
+            margin-left: 2px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .tumblr-container {
-            width: 100%;
-            height: 100%;
-            min-height: 500px;
+        .tumblr-link:hover::after {
+            opacity: 1;
         }
     </style>
 </head>
@@ -63,7 +44,7 @@
         
         <section id="contact">
             <h2><u>CONTACT</u></h2>
-            <p>You can find me at <i><u><a href="#" class="tumblr-link" data-blog="unbelovd">UNBELOVD</a></u></i><i>,</i> <i><u><a href="#" class="tumblr-link" data-blog="wulfbluds">WULFBLUDS</a></u></i><i>,</i> or <i><u><a href="#" class="tumblr-link" data-blog="ohisms">OHISMS</a></u></i> on tumblr<i>,</i> & my discord handle is <i><a href="https://discord.com/users/1064696730060337252" target="_blank">dru_ids</a></i> <i>!</i></p>
+            <p>You can find me at <i><u><a href="https://unbelovd.tumblr.com" class="tumblr-link" target="_blank">UNBELOVD</a></u></i><i>,</i> <i><u><a href="https://wulfbluds.tumblr.com" class="tumblr-link" target="_blank">WULFBLUDS</a></u></i><i>,</i> or <i><u><a href="https://ohisms.tumblr.com" class="tumblr-link" target="_blank">OHISMS</a></u></i> on tumblr<i>,</i> & my discord handle is <i><a href="https://discord.com/users/1064696730060337252" target="_blank">dru_ids</a></i> <i>!</i></p>
             <p>Got questions or want to connect? Reach out!</p>
             <ul>
                 <li>Email: <a href="mailto:rowan@gwyntel.us">rowan@gwyntel.us</a></li>
@@ -77,57 +58,5 @@
     <footer>
         <p>&copy; 2024 Stupid Himbo. All rights reserved.</p>
     </footer>
-
-    <div id="overlay" class="overlay">
-        <div class="popup">
-            <span class="close-btn">&times;</span>
-            <div id="tumblr-container" class="tumblr-container"></div>
-        </div>
-    </div>
-
-    <script src="https://assets.tumblr.com/post.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var tumblrLinks = document.querySelectorAll('.tumblr-link');
-            var overlay = document.getElementById('overlay');
-            var closeBtn = document.querySelector('.close-btn');
-            var container = document.getElementById('tumblr-container');
-
-            tumblrLinks.forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var blog = this.getAttribute('data-blog');
-                    
-                    // Create the embed code using Tumblr's official embed format
-                    container.innerHTML = `
-                        <div class="tumblr-post" 
-                             data-href="https://${blog}.tumblr.com" 
-                             data-did="dashboard">
-                            <a href="https://${blog}.tumblr.com">Visit ${blog}'s blog</a>
-                        </div>
-                    `;
-                    
-                    // Trigger Tumblr's embed script
-                    if (typeof Tumblr !== 'undefined') {
-                        Tumblr.createPostEmbed(container.firstChild);
-                    }
-                    
-                    overlay.style.display = 'block';
-                });
-            });
-
-            function closeOverlay() {
-                overlay.style.display = 'none';
-                container.innerHTML = '';
-            }
-
-            closeBtn.addEventListener('click', closeOverlay);
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) {
-                    closeOverlay();
-                }
-            });
-        });
-    </script>
 </body>
 </html>
