@@ -97,14 +97,15 @@
                     e.preventDefault();
                     var blog = this.getAttribute('data-blog');
                     
-                    // Load Tumblr embed
+                    // Load Tumblr embed using NPF format
                     container.innerHTML = `
                         <iframe 
-                            src="https://${blog}.tumblr.com/embed" 
+                            src="https://npf.${blog}.tumblr.com" 
                             width="100%" 
                             height="100%" 
                             frameborder="0" 
-                            allowfullscreen="true"
+                            allowtransparency="true"
+                            allow="encrypted-media"
                             style="min-height: 500px;"
                         ></iframe>
                     `;
