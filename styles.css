@@ -5,7 +5,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
                 url('https://wallpapers.com/images/hd/olive-tree-1920-x-1200-vd4tnrc7ee1my1qx.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -14,7 +14,7 @@ body {
 }
 
 header {
-    background-color: rgba(73, 73, 47, 0.9);
+    background-color: rgba(73, 73, 47, 0.95);
     color: #ffffff;
     text-align: center;
     padding: 1rem;
@@ -38,16 +38,18 @@ h1, h2 {
 }
 
 a {
-    color: #FFFF00;
+    color: #FFE066;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
+    color: #FFF3B0;
 }
 
 section {
-    background-color: rgba(73, 73, 47, 0.9);
+    background-color: rgba(73, 73, 47, 0.95);
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 5px;
@@ -57,7 +59,11 @@ section {
 }
 
 #contact a {
-    color: #888058;
+    color: #FFE066;
+}
+
+#contact a:hover {
+    color: #FFF3B0;
 }
 
 ul {
@@ -73,7 +79,7 @@ footer {
     text-align: center;
     margin-top: 20px;
     padding: 10px;
-    background-color: rgba(73, 73, 47, 0.9);
+    background-color: rgba(73, 73, 47, 0.95);
     color: #ffffff;
     border-radius: 5px;
     backdrop-filter: blur(5px);
